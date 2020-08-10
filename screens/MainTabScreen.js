@@ -2,26 +2,34 @@ import React from 'react';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import Icon from 'react-native-vector-icons/Ionicons';
-
-import HomeScreen from './HomeScreen';
-import CommunityScreen from './CommunityScreen';
-import ExerScreen from './ExerScreen';
-import DetailsScreen from './DetailsScreen';
-import ExploreScreen from './ExploreScreen';
-import ProfileScreen from './ProfileScreen';
 import {
   bg,
   btn_Gradient_up,
   btn_Gradient_down,
 } from './Config';
 
-const NotiStack = createStackNavigator();
-const HomeStack = createStackNavigator();
+import Icon from 'react-native-vector-icons/Ionicons';
+
+//feed, home, car, phone, immgrate [[
+import FeedScreen from './FeedScreen';
+import HouseScreen from './HouseScreen';
+import CarScreen from './CarScreen';
+import PhoneScreen from './PhoneScreen';
+import ImmgrateScreen from './ImmgrateScreen';
+
+const FeedStack = createStackNavigator();
+const HouseStack = createStackNavigator();
 const CarStack = createStackNavigator();
 const PhoneStack = createStackNavigator();
-const ImmStack = createStackNavigator();
+const ImmgrateStack = createStackNavigator();
+//]]
+
+
+import CommunityScreen from './CommunityScreen';
+import ExerScreen from './ExerScreen';
+import DetailsScreen from './DetailsScreen';
+import ExploreScreen from './ExploreScreen';
+import ProfileScreen from './ProfileScreen';
 const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
@@ -29,14 +37,14 @@ const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
   <Tab.Navigator
-    initialRouteName="Home"
+    initialRouteName="Feed"
     activeColor="#fff"
   >
     <Tab.Screen
-      name="Home"
-      component={HomeStackScreen}
+      name="Feed"
+      component={FeedStackScreen}
       options={{
-        tabBarLabel: '홈',
+        tabBarLabel: 'Feed',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
           <Icon name="ios-notifications" color={color} size={26} />
@@ -44,10 +52,10 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen 
-      name="Community"
-      component={CommunityScreen}
+      name="House"
+      component={HouseStackScreen}
       options={{
-        tabBarLabel: '집구해줘',
+        tabBarLabel: 'House',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
           <Icon name="ios-home" color={color} size={26} />
@@ -55,10 +63,10 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Exer"
-      component={ExploreScreen}
+      name="Car"
+      component={CarStackScreen}
       options={{
-        tabBarLabel: '차구해줘',
+        tabBarLabel: 'Car',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
           <Icon name="ios-car" color={color} size={26} />
@@ -66,10 +74,10 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Explore"
-      component={ExploreScreen}
+      name="Phone"
+      component={PhoneStackScreen}
       options={{
-        tabBarLabel: '폰구해줘',
+        tabBarLabel: 'Phone',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
           <Icon name="ios-phone-portrait" color={color} size={26} />
@@ -77,10 +85,10 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Profile"
-      component={ProfileStackScreen}
+      name="Immgrate"
+      component={ImmgrateStackScreen}
       options={{
-        tabBarLabel: '이민도와줘',
+        tabBarLabel: 'Immgrate',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
           <Icon name="ios-airplane" color={color} size={26} />
@@ -92,8 +100,8 @@ const MainTabScreen = () => (
 
 export default MainTabScreen;
 
-const HomeStackScreen = ({ navigation }) => (
-  <HomeStack.Navigator screenOptions={{
+const FeedStackScreen = ({ navigation }) => (
+  <FeedStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
     },
@@ -102,17 +110,20 @@ const HomeStackScreen = ({ navigation }) => (
       fontWeight: 'bold'
     }
   }}>
-    <HomeStack.Screen name="Home" component={HomeScreen} options={{
-      title: '홈 & 피드',
+    <FeedStack.Screen name="Feed" component={FeedScreen} options={{
+      title: 'Feed',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
-      )
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
     }} />
-  </HomeStack.Navigator>
+  </FeedStack.Navigator>
 );
 
-const ProfileStackScreen = ({ navigation }) => (
-  <ProfileStack.Navigator screenOptions={{
+const HouseStackScreen = ({ navigation }) => (
+  <HouseStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
     },
@@ -121,13 +132,83 @@ const ProfileStackScreen = ({ navigation }) => (
       fontWeight: 'bold'
     }
   }}>
-    <ProfileStack.Screen name="Profile" component={ProfileScreen} options={{
-      title: '이민도와줘',
+    <HouseStack.Screen name="Home" component={HouseScreen} options={{
+      title: 'Finding a house',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
-      )
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      
     }} />
-  </ProfileStack.Navigator>
+  </HouseStack.Navigator>
+);
+
+const CarStackScreen = ({ navigation }) => (
+  <CarStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: bg,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <CarStack.Screen name="Car" component={CarScreen} options={{
+      title: 'Finding a Car',
+      headerLeft: () => (
+        <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+    }} />
+  </CarStack.Navigator>
+);
+
+const PhoneStackScreen = ({ navigation }) => (
+  <PhoneStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: bg,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <PhoneStack.Screen name="Phone" component={PhoneScreen} options={{
+      title: 'Finding a Phone',
+      headerLeft: () => (
+        <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+    }} />
+  </PhoneStack.Navigator>
+);
+
+const ImmgrateStackScreen = ({ navigation }) => (
+  <ImmgrateStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: bg,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <ImmgrateStack.Screen name="Immgrate" component={ImmgrateScreen} options={{
+      title: 'Immigration services',
+      headerLeft: () => (
+        <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+    }} />
+  </ImmgrateStack.Navigator>
 );
 
 // const DetailsStackScreen = ({ navigation }) => (

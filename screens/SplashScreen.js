@@ -25,14 +25,14 @@ const SplashScreen = ({navigation}) => {
       <View style={styles.container}>
           <StatusBar backgroundColor={bg} barStyle="light-content"/>
         <View style={styles.header}>
-            {/* <Animatable.Image 
+            <Animatable.Image 
                 animation="bounceIn"
                 duraton="2000"
             source={require('../assets/logo.png')}
             //style={styles.logo}
             resizeMode="stretch"
-            /> */}
-            <Text style={styles.text_header}>Near N Dear</Text>
+            />
+            {/* <Text style={styles.text_header}>Near N Dear</Text> */}
         </View>
         <Animatable.View 
             style={[styles.footer, {
